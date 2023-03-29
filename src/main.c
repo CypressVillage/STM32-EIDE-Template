@@ -1,22 +1,27 @@
 #include "GPIO_DEF.h"
-#include "lelib.c"
+#include "lelib.h"
 
 #define STR2(x) #x
 #define STR(x) STR2(x)
 
-// this aligns start address to 16 and terminates byte array with explict 0
-// which is not really needed, feel free to change it to whatever you want/need
-#define INCBIN(name, file) \
-    __asm(".section .rodata\n" \
-            ".global incbin_" STR(name) "_start\n" \
-            "incbin_" STR(name) "_start:\n" \
-            ".incbin \"" file "\"\n" \
-            ".byte 0\n" \
-    ); \
-    extern const char incbin_ ## name ## _start[];
+#if defined ( __GNUC__ )
+    // this aligns start address to 16 and terminates byte array with explict 0
+    // which is not really needed, feel free to change it to whatever you want/need
+    #define INCBIN(name, file) \
+        __asm(".section .rodata\n" \
+                ".global incbin_" STR(name) "_start\n" \
+                "incbin_" STR(name) "_start:\n" \
+                ".incbin \"" file "\"\n" \
+                ".byte 0\n" \
+        ); \
+        extern const char incbin_ ## name ## _start[];
 
-INCBIN(luascript, "./userscripts.lua");
-
+    INCBIN(luascript, "./userscripts.lua");
+#elif defined ( __CC_ARM )
+    static char* incbin_luascript_start = "\
+    print('Hello World!')\
+    ";
+#endif
 
 int main(void)
 {

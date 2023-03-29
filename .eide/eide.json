@@ -1,5 +1,5 @@
 {
-  "name": "gcctmp",
+  "name": "template",
   "type": "ARM",
   "dependenceList": [],
   "srcDirs": [
@@ -19,8 +19,10 @@
     "uid": "3c7123743f8d54bd07df0c430033de6f"
   },
   "targets": {
-    "Debug": {
-      "excludeList": [],
+    "gcc": {
+      "excludeList": [
+        "lib/STM32F10x_DeviceSupport/startup_stm32f10x_hd_armcc.s"
+      ],
       "toolchain": "GCC",
       "compileConfig": {
         "cpuType": "Cortex-M3",
@@ -42,7 +44,82 @@
         "speed": 4000,
         "address": "0x08000000",
         "elFile": "None",
-        "optionBytes": ".eide/debug.st.option.bytes.ini",
+        "optionBytes": ".eide/gcc.st.option.bytes.ini",
+        "otherCmds": ""
+      },
+      "uploadConfigMap": {
+        "JLink": {
+          "bin": "",
+          "baseAddr": "",
+          "cpuInfo": {
+            "vendor": "null",
+            "cpuName": "null"
+          },
+          "proType": 1,
+          "speed": 8000,
+          "otherCmds": ""
+        }
+      },
+      "custom_dep": {
+        "name": "default",
+        "incList": [],
+        "libList": [],
+        "sourceDirList": [],
+        "defineList": [
+          "USE_STDPERIPH_DRIVER",
+          "STM32F10X_HD"
+        ]
+      }
+    },
+    "armcc": {
+      "excludeList": [
+        "lib/STM32F10x_DeviceSupport/startup_stm32f10x_hd.s",
+        "lib/STM32F10x_DeviceSupport/startup_stm32f10x_hd_gcc.s"
+      ],
+      "toolchain": "AC5",
+      "compileConfig": {
+        "cpuType": "Cortex-M3",
+        "floatingPointHardware": "none",
+        "useCustomScatterFile": false,
+        "scatterFilePath": "<YOUR_SCATTER_FILE>.sct",
+        "storageLayout": {
+          "RAM": [
+            {
+              "tag": "IRAM",
+              "id": 1,
+              "mem": {
+                "startAddr": "0x20000000",
+                "size": "0xC000"
+              },
+              "isChecked": true,
+              "noInit": false
+            }
+          ],
+          "ROM": [
+            {
+              "tag": "IROM",
+              "id": 1,
+              "mem": {
+                "startAddr": "0x08000000",
+                "size": "0x40000"
+              },
+              "isChecked": true,
+              "isStartup": true
+            }
+          ]
+        },
+        "options": "null"
+      },
+      "uploader": "STLink",
+      "uploadConfig": {
+        "bin": "",
+        "proType": "SWD",
+        "resetMode": "default",
+        "runAfterProgram": true,
+        "speed": 4000,
+        "address": "0x08000000",
+        "elFile": "None",
+        "optionBytes": ".eide/armcc.st.option.bytes.ini",
         "otherCmds": ""
       },
       "uploadConfigMap": {

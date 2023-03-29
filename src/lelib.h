@@ -1,3 +1,6 @@
+#ifndef __LUA_LIB_H
+#define __LUA_LIB_H
+
 #include "lua.h"
 #include "lualib.h"
 #include "lauxlib.h"
@@ -35,3 +38,5 @@ static const struct luaL_Reg elib[]=
     {"led_off", lua_led_off},
     {NULL,NULL}
 };
+
+#endif /* __LUA_LIB_H */
