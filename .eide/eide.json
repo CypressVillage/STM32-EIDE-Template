@@ -74,7 +74,8 @@
     "armcc": {
       "excludeList": [
         "lib/STM32F10x_DeviceSupport/startup_stm32f10x_hd.s",
-        "lib/STM32F10x_DeviceSupport/startup_stm32f10x_hd_gcc.s"
+        "lib/STM32F10x_DeviceSupport/startup_stm32f10x_hd_gcc.s",
+        "lib/Lua/loslib.c"
       ],
       "toolchain": "AC5",
       "compileConfig": {

@@ -19,7 +19,12 @@
     INCBIN(luascript, "./userscripts.lua");
 #elif defined ( __CC_ARM )
     static char* incbin_luascript_start = "\
-    print('Hello World!')\
+        while true do \
+        led_on()\
+        delayms(200)\
+        led_off()\
+        delayms(200)\
+        end\
     ";
 #endif
 
