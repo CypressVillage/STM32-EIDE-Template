@@ -32,12 +32,13 @@ int main(void)
 {
     LED_Init();
     OLED_Init();
+    Serial_Init();
 
-    lua_State *L;
-    L = luaL_newstate();
-    luaopen_base(L);
-    luaL_setfuncs(L, elib, 0);
-    luaL_dostring(L, incbin_luascript_start);
+    // lua_State *L;
+    // L = luaL_newstate();
+    // luaopen_base(L);
+    // luaL_setfuncs(L, elib, 0);
+    // luaL_dostring(L, incbin_luascript_start);
 
     while(1);
 }

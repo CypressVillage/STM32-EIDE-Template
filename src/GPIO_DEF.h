@@ -5,7 +5,7 @@
 
 #define RCC_GPIO_LED        RCC_APB2Periph_GPIOA
 #define GPIO_LED            GPIOA
-#define PIN_LED_1           GPIO_Pin_5
+#define PIN_LED_1           GPIO_Pin_8
 #define PIN_LED_2           GPIO_Pin_9
 
 #define RCC_GPIO_OLED       RCC_APB2Periph_GPIOB

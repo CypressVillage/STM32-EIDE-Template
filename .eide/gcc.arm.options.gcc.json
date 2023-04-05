@@ -1,6 +1,14 @@
 {
     "version": 4,
-    "beforeBuildTasks": [],
+    "beforeBuildTasks": [
+        {
+            "name": "delete main.o",
+            "disable": false,
+            "abortAfterFailed": false,
+            "stopBuildAfterFailed": false,
+            "command": "del \"${OutDir}\\src\\main.o\""
+        }
+    ],
     "afterBuildTasks": [],
     "global": {
         "$float-abi-type": "softfp",
