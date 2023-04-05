@@ -13,6 +13,8 @@
 #include "OLED.h"
 #include "Key.h"
 #include "Serial.h"
+#include "I2C.h"
+#include "ADS1115.h"
 
 /* c-lua functions */
 static int lua_delay(lua_State *L) {

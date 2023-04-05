@@ -20,7 +20,7 @@ void OLED_I2C_Init(void)
  	GPIO_Init(GPIO_OLED, &GPIO_InitStructure);
 	GPIO_InitStructure.GPIO_Pin = PIN_OLED_SDA;
  	GPIO_Init(GPIO_OLED, &GPIO_InitStructure);
-	
+
 	OLED_W_SCL(1);
 	OLED_W_SDA(1);
 }
