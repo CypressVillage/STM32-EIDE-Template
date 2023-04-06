@@ -3,16 +3,13 @@
 
 #include "stm32f10x.h"
 #include "stdio.h"
+#include "GPIO_DEF.h"
 
-#define I2C_SCL_HIGH() GPIO_SetBits(I2C_GPIO_PORT, I2C_SCL_PIN)
-#define I2C_SCL_LOW()  GPIO_ResetBits(I2C_GPIO_PORT, I2C_SCL_PIN)
-#define I2C_SDA_HIGH() GPIO_SetBits(I2C_GPIO_PORT, I2C_SDA_PIN)
-#define I2C_SDA_LOW()  GPIO_ResetBits(I2C_GPIO_PORT, I2C_SDA_PIN)
-#define I2C_SDA_READ() GPIO_ReadInputDataBit(I2C_GPIO_PORT, I2C_SDA_PIN)
-
-#define I2C_GPIO_PORT  GPIOB
-#define I2C_SCL_PIN    GPIO_Pin_10
-#define I2C_SDA_PIN    GPIO_Pin_11
+#define I2C_SCL_HIGH() GPIO_SetBits(GPIO_ADS1115, PIN_ADS1115_SCL)
+#define I2C_SCL_LOW()  GPIO_ResetBits(GPIO_ADS1115, PIN_ADS1115_SCL)
+#define I2C_SDA_HIGH() GPIO_SetBits(GPIO_ADS1115, PIN_ADS1115_SDA)
+#define I2C_SDA_LOW()  GPIO_ResetBits(GPIO_ADS1115, PIN_ADS1115_SDA)
+#define I2C_SDA_READ() GPIO_ReadInputDataBit(GPIO_ADS1115, PIN_ADS1115_SDA)
 
 void I2C_GPIOInit(void);
 void SDA_Input_Mode(void);

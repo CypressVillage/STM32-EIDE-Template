@@ -1,6 +1,11 @@
 #include "ads1115.h"
 #include "Delay.h"
 
+void ADS1115_Init(void)
+{
+	ADS115_config(0);
+}
+
 void ADS1115_Write(u8 Reg , u8 reg_MSB , u8 reg_LSB)
 {	
 	I2C_Start();
@@ -14,6 +19,7 @@ void ADS1115_Write(u8 Reg , u8 reg_MSB , u8 reg_LSB)
 	while(I2C_WaitAck());
 	I2C_Stop();
 }
+
 float ADS1115_ReadAD()
 {
 	float ret;
@@ -43,8 +49,8 @@ float ADS1115_ReadAD()
 	
 }
 
-void ADS115_config()
+void ADS115_config(int channel)
 {
-
-	ADS1115_Write(REG_config, config_MSB ,config_LSB);
+	int mux = channel + 0x04;
+	ADS1115_Write(REG_config, config_MSB | (mux << 4) ,config_LSB);
 }

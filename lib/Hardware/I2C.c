@@ -1,34 +1,35 @@
 #include "i2c.h"
 #include "Delay.h"
+#include "GPIO_DEF.h"
 
 void I2C_GPIOInit(void)
 {
     GPIO_InitTypeDef GPIO_InitStructure;
     RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);
-    GPIO_InitStructure.GPIO_Pin   = I2C_SCL_PIN | I2C_SDA_PIN;
+    GPIO_InitStructure.GPIO_Pin   = PIN_ADS1115_SCL | PIN_ADS1115_SDA;
     GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;
     GPIO_InitStructure.GPIO_Mode  = GPIO_Mode_Out_PP;
-    GPIO_Init(I2C_GPIO_PORT, &GPIO_InitStructure);
-    GPIO_ResetBits(I2C_GPIO_PORT, I2C_SCL_PIN | I2C_SDA_PIN);
+    GPIO_Init(GPIO_ADS1115, &GPIO_InitStructure);
+    GPIO_ResetBits(GPIO_ADS1115, PIN_ADS1115_SCL | PIN_ADS1115_SDA);
 }
 // 配置SDA信号线为输入模式
 void SDA_Input_Mode(void)
 {
     GPIO_InitTypeDef GPIO_InitStructure;
-    GPIO_InitStructure.GPIO_Pin   = I2C_SDA_PIN;
+    GPIO_InitStructure.GPIO_Pin   = PIN_ADS1115_SDA;
     GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;
     GPIO_InitStructure.GPIO_Mode  = GPIO_Mode_IPD;
-    GPIO_Init(I2C_GPIO_PORT, &GPIO_InitStructure);
+    GPIO_Init(GPIO_ADS1115, &GPIO_InitStructure);
 }
 
 // 配置SDA信号线为输出模式
 void SDA_Output_Mode(void)
 {
     GPIO_InitTypeDef GPIO_InitStructure;
-    GPIO_InitStructure.GPIO_Pin   = I2C_SDA_PIN;
+    GPIO_InitStructure.GPIO_Pin   = PIN_ADS1115_SDA;
     GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;
     GPIO_InitStructure.GPIO_Mode  = GPIO_Mode_Out_PP;
-    GPIO_Init(I2C_GPIO_PORT, &GPIO_InitStructure);
+    GPIO_Init(GPIO_ADS1115, &GPIO_InitStructure);
 }
 
 /**

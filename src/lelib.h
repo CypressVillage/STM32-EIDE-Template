@@ -46,7 +46,7 @@ static int lua_Serialprint(lua_State *L) {
         const char *s = luaL_tolstring(L, i, &l);  /* convert it to string */
         if (i > 1)  /* not the first element? */
             Serial_Printf("\t");  /* add a tab before it */
-        Serial_Printf(s);  /* print it */
+        Serial_Printf((char*)s);  /* print it */
         lua_pop(L, 1);  /* pop result */
     }
     Serial_Printf("");
