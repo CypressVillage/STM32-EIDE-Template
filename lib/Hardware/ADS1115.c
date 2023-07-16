@@ -3,7 +3,7 @@
 
 void ADS1115_Init(void)
 {
-	ADS115_config(0);
+	ADS115_config(3);
 }
 
 void ADS1115_Write(u8 Reg , u8 reg_MSB , u8 reg_LSB)
@@ -53,4 +53,26 @@ void ADS115_config(int channel)
 {
 	int mux = channel + 0x04;
 	ADS1115_Write(REG_config, config_MSB | (mux << 4) ,config_LSB);
+}
+
+u16 ADS1115_ReadAD_raw(void)
+{
+	uint16_t data;
+	I2C_Start();
+	I2C_SendByte(0x90+0);//0x90地址+0写位
+	while(I2C_WaitAck());
+	I2C_SendByte(REG_Conversion);
+	while(I2C_WaitAck());
+	I2C_Stop();
+	Delay_us(5);
+	I2C_Start();
+	I2C_SendByte(0x90+1);//0x90地址+1读位
+	while(I2C_WaitAck());
+	data = I2C_ReadByte(1);
+	data = (data <<	8)&0xff00;//前8位
+	data+=	I2C_ReadByte(1);//后8位
+	I2C_Stop();
+
+	return data;
+
 }

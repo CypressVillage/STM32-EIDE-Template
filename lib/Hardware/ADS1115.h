@@ -37,5 +37,6 @@ SLAVE ADDRESS 0X90
 void ADS1115_Init(void);
 void ADS1115_Write(u8 Reg, u8 reg_MSB, u8 reg_LSB);
 float ADS1115_ReadAD(void);
+u16 ADS1115_ReadAD_raw(void);
 void ADS115_config(int channel);
 #endif
