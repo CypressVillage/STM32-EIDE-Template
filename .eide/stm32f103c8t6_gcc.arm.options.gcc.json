@@ -1,0 +1,33 @@
+{
+    "version": 5,
+    "beforeBuildTasks": [
+        {
+            "name": "delete main.o",
+            "disable": false,
+            "abortAfterFailed": false,
+            "stopBuildAfterFailed": false,
+            "command": "del \"${OutDir}\\src\\main.o\""
+        }
+    ],
+    "afterBuildTasks": [],
+    "global": {
+        "$float-abi-type": "softfp",
+        "output-debug-info": "enable",
+        "misc-control": "--specs=nosys.specs --specs=nano.specs"
+    },
+    "c/cpp-compiler": {
+        "language-c": "c11",
+        "language-cpp": "c++11",
+        "optimization": "level-0",
+        "warnings": "all-warnings",
+        "one-elf-section-per-function": true,
+        "one-elf-section-per-data": true
+    },
+    "asm-compiler": {},
+    "linker": {
+        "output-format": "elf",
+        "remove-unused-input-sections": true,
+        "LD_FLAGS": " ",
+        "LIB_FLAGS": "-lm"
+    }
+}

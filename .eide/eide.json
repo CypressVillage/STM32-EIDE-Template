@@ -21,7 +21,8 @@
   "targets": {
     "gcc": {
       "excludeList": [
-        "lib/STM32F10x_DeviceSupport/startup_stm32f10x_hd_armcc.s"
+        "lib/STM32F10x_DeviceSupport/startup_stm32f10x_hd_armcc.s",
+        "lib/STM32F10x_DeviceSupport/startup_stm32f10x_ld_armcc.s"
       ],
       "toolchain": "GCC",
       "compileConfig": {
@@ -75,7 +76,8 @@
       "excludeList": [
         "lib/STM32F10x_DeviceSupport/startup_stm32f10x_hd.s",
         "lib/STM32F10x_DeviceSupport/startup_stm32f10x_hd_gcc.s",
-        "lib/Lua/loslib.c"
+        "lib/Lua/loslib.c",
+        "lib/STM32F10x_DeviceSupport/startup_stm32f10x_ld_armcc.s"
       ],
       "toolchain": "AC5",
       "compileConfig": {
@@ -144,6 +146,136 @@
         "defineList": [
           "USE_STDPERIPH_DRIVER",
           "STM32F10X_HD"
+        ]
+      }
+    },
+    "STM32F103C8T6_gcc": {
+      "excludeList": [
+        "lib/STM32F10x_DeviceSupport/startup_stm32f10x_hd_armcc.s",
+        "lib/STM32F10x_DeviceSupport/startup_stm32f10x_ld_armcc.s"
+      ],
+      "toolchain": "GCC",
+      "compileConfig": {
+        "cpuType": "Cortex-M3",
+        "floatingPointHardware": "none",
+        "scatterFilePath": "STM32F103C8Tx_FLASH.ld",
+        "useCustomScatterFile": true,
+        "storageLayout": {
+          "RAM": [],
+          "ROM": []
+        },
+        "options": "null"
+      },
+      "uploader": "STLink",
+      "uploadConfig": {
+        "bin": "",
+        "proType": "SWD",
+        "resetMode": "default",
+        "runAfterProgram": true,
+        "speed": 4000,
+        "address": "0x08000000",
+        "elFile": "None",
+        "optionBytes": ".eide/stm32f103c8t6_gcc.st.option.bytes.ini",
+        "otherCmds": ""
+      },
+      "uploadConfigMap": {
+        "JLink": {
+          "bin": "",
+          "baseAddr": "",
+          "cpuInfo": {
+            "vendor": "null",
+            "cpuName": "null"
+          },
+          "proType": 1,
+          "speed": 8000,
+          "otherCmds": ""
+        }
+      },
+      "custom_dep": {
+        "name": "default",
+        "incList": [],
+        "libList": [],
+        "sourceDirList": [],
+        "defineList": [
+          "USE_STDPERIPH_DRIVER",
+          "STM32F10X_LD"
+        ]
+      }
+    },
+    "STM32F103C8T6_armcc": {
+      "excludeList": [
+        "lib/STM32F10x_DeviceSupport/startup_stm32f10x_hd.s",
+        "lib/STM32F10x_DeviceSupport/startup_stm32f10x_hd_gcc.s",
+        "lib/Lua/loslib.c",
+        "lib/STM32F10x_DeviceSupport/startup_stm32f10x_hd_armcc.s"
+      ],
+      "toolchain": "AC5",
+      "compileConfig": {
+        "cpuType": "Cortex-M3",
+        "floatingPointHardware": "none",
+        "useCustomScatterFile": false,
+        "scatterFilePath": "<YOUR_SCATTER_FILE>.sct",
+        "storageLayout": {
+          "RAM": [
+            {
+              "tag": "IRAM",
+              "id": 1,
+              "mem": {
+                "startAddr": "0x20000000",
+                "size": "0xC000"
+              },
+              "isChecked": true,
+              "noInit": false
+            }
+          ],
+          "ROM": [
+            {
+              "tag": "IROM",
+              "id": 1,
+              "mem": {
+                "startAddr": "0x08000000",
+                "size": "0x40000"
+              },
+              "isChecked": true,
+              "isStartup": true
+            }
+          ]
+        },
+        "options": "null"
+      },
+      "uploader": "STLink",
+      "uploadConfig": {
+        "bin": "",
+        "proType": "SWD",
+        "resetMode": "default",
+        "runAfterProgram": true,
+        "speed": 4000,
+        "address": "0x08000000",
+        "elFile": "None",
+        "optionBytes": ".eide/stm32f103c8t6_armcc.st.option.bytes.ini",
+        "otherCmds": ""
+      },
+      "uploadConfigMap": {
+        "JLink": {
+          "bin": "",
+          "baseAddr": "",
+          "cpuInfo": {
+            "vendor": "null",
+            "cpuName": "null"
+          },
+          "proType": 1,
+          "speed": 8000,
+          "otherCmds": ""
+        }
+      },
+      "custom_dep": {
+        "name": "default",
+        "incList": [],
+        "libList": [],
+        "sourceDirList": [],
+        "defineList": [
+          "USE_STDPERIPH_DRIVER",
+          "STM32F10X_LD"
         ]
       }
     }
