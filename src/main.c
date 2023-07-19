@@ -4,12 +4,15 @@
 #include "Delay.h"
 #include "LED.h"
 #include "OLED.h"
+#include "OLED_Pic.h"
 #include "Key.h"
 #include "Serial.h"
 #include "I2C.h"
-#include "ADS1115.h"
+// #include "ADS1115.h"
+#include "u8g2.h"
 // #include "lelib.h" // 自定义lua函数库
 
+/****************************************************************************************/
 /* 将userscropts.lua中的内容加载进"incbin_luascript_start"字符串 */
 // #define STR2(x) #x
 // #define STR(x) STR2(x)
@@ -37,7 +40,7 @@
 //         end\
 //     ";
 // #endif
-
+/****************************************************************************************/
 
 int main(void)
 {
@@ -49,7 +52,10 @@ int main(void)
     OLED_Init();
     Serial_Init();
     I2C_GPIOInit();
-	ADS1115_Init();
+    // ADS1115_Init();
+
+    u8g2_t u8g2;
+    u8g2Init(&u8g2);
 
     /* 开启Lua虚拟机并执行自定义lua代码 */
     // lua_State *L;
@@ -58,9 +64,13 @@ int main(void)
     // luaL_setfuncs(L, elib, 0);
     // luaL_dostring(L, incbin_luascript_start);
 
-	while(1)
-	{
-        Serial_SendString("Hello World!\r\n");
-        Delay_ms(1);
-	}
+    while (1) {
+        // Serial_SendString("Hello World!\r\n");
+        // OLED_ShowString(1, 1, "Hello World!");
+        // Delay_s(1);
+       u8g2_FirstPage(&u8g2);
+       do {
+           draw(&u8g2);
+       } while (u8g2_NextPage(&u8g2));
+    }
 }

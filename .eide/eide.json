@@ -275,7 +275,7 @@
         "sourceDirList": [],
         "defineList": [
           "USE_STDPERIPH_DRIVER",
-          "STM32F10X_LD"
+          "STM32F10X_MD"
         ]
       }
     }
