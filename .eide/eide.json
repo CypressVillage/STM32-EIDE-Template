@@ -19,149 +19,15 @@
     "uid": "3c7123743f8d54bd07df0c430033de6f"
   },
   "targets": {
-    "gcc": {
-      "excludeList": [
-        "lib/STM32F10x_DeviceSupport/startup_stm32f10x_hd_armcc.s",
-        "lib/STM32F10x_DeviceSupport/startup_stm32f10x_ld_armcc.s",
-        "lib/DSP_Lib",
-        "lib/DSP_Source/ARM"
-      ],
-      "toolchain": "GCC",
-      "compileConfig": {
-        "cpuType": "Cortex-M3",
-        "floatingPointHardware": "none",
-        "scatterFilePath": "STM32F103RCTx_FLASH.ld",
-        "useCustomScatterFile": true,
-        "storageLayout": {
-          "RAM": [],
-          "ROM": []
-        },
-        "options": "null"
-      },
-      "uploader": "STLink",
-      "uploadConfig": {
-        "bin": "",
-        "proType": "SWD",
-        "resetMode": "default",
-        "runAfterProgram": true,
-        "speed": 4000,
-        "address": "0x08000000",
-        "elFile": "None",
-        "optionBytes": ".eide/gcc.st.option.bytes.ini",
-        "otherCmds": ""
-      },
-      "uploadConfigMap": {
-        "JLink": {
-          "bin": "",
-          "baseAddr": "",
-          "cpuInfo": {
-            "vendor": "null",
-            "cpuName": "null"
-          },
-          "proType": 1,
-          "speed": 8000,
-          "otherCmds": ""
-        }
-      },
-      "custom_dep": {
-        "name": "default",
-        "incList": [],
-        "libList": [],
-        "sourceDirList": [],
-        "defineList": [
-          "USE_STDPERIPH_DRIVER",
-          "STM32F10X_HD",
-          "ARM_MATH_CM3"
-        ]
-      }
-    },
-    "armcc": {
-      "excludeList": [
-        "lib/STM32F10x_DeviceSupport/startup_stm32f10x_hd.s",
-        "lib/STM32F10x_DeviceSupport/startup_stm32f10x_hd_gcc.s",
-        "lib/Lua/loslib.c",
-        "lib/STM32F10x_DeviceSupport/startup_stm32f10x_ld_armcc.s",
-        "lib/DSP",
-        "lib/DSP_Lib",
-        "lib/DSP_Source/GCC"
-      ],
-      "toolchain": "AC5",
-      "compileConfig": {
-        "cpuType": "Cortex-M3",
-        "floatingPointHardware": "none",
-        "useCustomScatterFile": false,
-        "scatterFilePath": "<YOUR_SCATTER_FILE>.sct",
-        "storageLayout": {
-          "RAM": [
-            {
-              "tag": "IRAM",
-              "id": 1,
-              "mem": {
-                "startAddr": "0x20000000",
-                "size": "0xC000"
-              },
-              "isChecked": true,
-              "noInit": false
-            }
-          ],
-          "ROM": [
-            {
-              "tag": "IROM",
-              "id": 1,
-              "mem": {
-                "startAddr": "0x08000000",
-                "size": "0x40000"
-              },
-              "isChecked": true,
-              "isStartup": true
-            }
-          ]
-        },
-        "options": "null"
-      },
-      "uploader": "STLink",
-      "uploadConfig": {
-        "bin": "",
-        "proType": "SWD",
-        "resetMode": "default",
-        "runAfterProgram": true,
-        "speed": 4000,
-        "address": "0x08000000",
-        "elFile": "None",
-        "optionBytes": ".eide/armcc.st.option.bytes.ini",
-        "otherCmds": ""
-      },
-      "uploadConfigMap": {
-        "JLink": {
-          "bin": "",
-          "baseAddr": "",
-          "cpuInfo": {
-            "vendor": "null",
-            "cpuName": "null"
-          },
-          "proType": 1,
-          "speed": 8000,
-          "otherCmds": ""
-        }
-      },
-      "custom_dep": {
-        "name": "default",
-        "incList": [],
-        "libList": [],
-        "sourceDirList": [],
-        "defineList": [
-          "USE_STDPERIPH_DRIVER",
-          "STM32F10X_HD",
-          "ARM_MATH_CM3"
-        ]
-      }
-    },
     "STM32F103C8T6_gcc": {
       "excludeList": [
         "lib/STM32F10x_DeviceSupport/startup_stm32f10x_hd_armcc.s",
         "lib/STM32F10x_DeviceSupport/startup_stm32f10x_ld_armcc.s",
+        "lib/STM32F10x_DSP_Lib/src/asm/arm",
+        "lib/STM32F10x_DSP_Lib/src/asm/iar",
+        "lib/STM32_USB-FS-Device_Driver",
         "lib/DSP_Lib",
-        "lib/DSP_Source/ARM"
+        "lib/DSP_Source"
       ],
       "toolchain": "GCC",
       "compileConfig": {
@@ -218,7 +84,11 @@
         "lib/STM32F10x_DeviceSupport/startup_stm32f10x_hd_gcc.s",
         "lib/Lua/loslib.c",
         "lib/STM32F10x_DeviceSupport/startup_stm32f10x_hd_armcc.s",
-        "lib/DSP"
+        "lib/DSP",
+        "lib/STM32F10x_DSP_Lib/src/asm/iar",
+        "lib/STM32F10x_DSP_Lib/src/asm/gcc",
+        "lib/DSP_Lib",
+        "lib/DSP_Source/GCC"
       ],
       "toolchain": "AC5",
       "compileConfig": {
@@ -296,6 +166,8 @@
         "lib/STM32F10x_DeviceSupport/startup_stm32f10x_hd_armcc.s",
         "lib/STM32F10x_DeviceSupport/startup_stm32f10x_ld_armcc.s",
         "lib/DSP_Lib",
+        "lib/STM32F10x_DSP_Lib/src/asm/arm",
+        "lib/STM32F10x_DSP_Lib/src/asm/iar",
         "lib/DSP_Source/ARM"
       ],
       "toolchain": "GCC",
@@ -355,7 +227,9 @@
         "lib/STM32F10x_DeviceSupport/startup_stm32f10x_ld_armcc.s",
         "lib/DSP",
         "lib/DSP_Lib",
-        "lib/DSP_Source/GCC"
+        "lib/DSP_Source/GCC",
+        "lib/STM32F10x_DSP_Lib/src/asm/gcc",
+        "lib/STM32F10x_DSP_Lib/src/asm/iar"
       ],
       "toolchain": "AC5",
       "compileConfig": {

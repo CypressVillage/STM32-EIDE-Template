@@ -13,6 +13,7 @@
 // #include "lelib.h" // 自定义lua函数库
 #include "math.h"
 #include "arm_math.h"
+#include "stm32_dsp.h"
 
 /****************************************************************************************/
 /* 将userscropts.lua中的内容加载进"incbin_luascript_start"字符串 */
@@ -44,11 +45,12 @@
 // #endif
 /****************************************************************************************/
 
-	float EcgDiscrList[28];
-	float stdResultDiffECG;
+#define NPT 256
 
-	
-
+uint32_t adc_buf[NPT] = {0};
+long lBufInArray[NPT];
+long lBufOutArray[NPT / 2];
+long lBufMagArray[NPT / 2];
 
 int main(void)
 {
@@ -73,13 +75,13 @@ int main(void)
     // luaL_dostring(L, incbin_luascript_start);
 
     while (1) {
-        // Serial_SendString("Hello World!\r\n");
-        // OLED_ShowString(1, 1, "Hello World!");
-        // Delay_s(1);
-    //    u8g2_FirstPage(&u8g2);
-    //    do {
-    //        draw(&u8g2);
-    //    } while (u8g2_NextPage(&u8g2));
-			// arm_std_f32(EcgDiscrList,28-4,&stdResultDiffECG);
+        // 填充数组
+        for (int i = 0; i < NPT; i++)
+            // 这里因为单片机的ADC只能测正的电压 所以需要前级加直流偏执
+            // 加入直流偏执后，需要在软件上减去2048即一半，达到负半周期测量的目的（需要根据具体情况来进行配置）
+            lBufInArray[i] = ((signed short)(adc_buf[i] - 2048)) << 16;
+
+        cr4_fft_256_stm32(lBufOutArray, lBufInArray, NPT);
     }
+
 }
