@@ -77,7 +77,8 @@
         "lib/STM32F10x_DeviceSupport/startup_stm32f10x_hd.s",
         "lib/STM32F10x_DeviceSupport/startup_stm32f10x_hd_gcc.s",
         "lib/Lua/loslib.c",
-        "lib/STM32F10x_DeviceSupport/startup_stm32f10x_ld_armcc.s"
+        "lib/STM32F10x_DeviceSupport/startup_stm32f10x_ld_armcc.s",
+        "lib/DSP"
       ],
       "toolchain": "AC5",
       "compileConfig": {
@@ -145,7 +146,8 @@
         "sourceDirList": [],
         "defineList": [
           "USE_STDPERIPH_DRIVER",
-          "STM32F10X_HD"
+          "STM32F10X_HD",
+          "ARM_MATH_CM3"
         ]
       }
     },
@@ -207,7 +209,8 @@
         "lib/STM32F10x_DeviceSupport/startup_stm32f10x_hd.s",
         "lib/STM32F10x_DeviceSupport/startup_stm32f10x_hd_gcc.s",
         "lib/Lua/loslib.c",
-        "lib/STM32F10x_DeviceSupport/startup_stm32f10x_hd_armcc.s"
+        "lib/STM32F10x_DeviceSupport/startup_stm32f10x_hd_armcc.s",
+        "lib/DSP"
       ],
       "toolchain": "AC5",
       "compileConfig": {
@@ -275,7 +278,8 @@
         "sourceDirList": [],
         "defineList": [
           "USE_STDPERIPH_DRIVER",
-          "STM32F10X_MD"
+          "STM32F10X_MD",
+          "ARM_MATH_CM3"
         ]
       }
     }

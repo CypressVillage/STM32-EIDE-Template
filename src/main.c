@@ -9,8 +9,10 @@
 #include "Serial.h"
 #include "I2C.h"
 // #include "ADS1115.h"
-#include "u8g2.h"
+// #include "u8g2.h"
 // #include "lelib.h" // 自定义lua函数库
+#include "math.h"
+#include "arm_math.h"
 
 /****************************************************************************************/
 /* 将userscropts.lua中的内容加载进"incbin_luascript_start"字符串 */
@@ -42,6 +44,12 @@
 // #endif
 /****************************************************************************************/
 
+	float EcgDiscrList[28];
+	float stdResultDiffECG;
+
+	
+
+
 int main(void)
 {
     /* 使用内置时钟，proteus仿真需要 */
@@ -54,8 +62,8 @@ int main(void)
     I2C_GPIOInit();
     // ADS1115_Init();
 
-    u8g2_t u8g2;
-    u8g2Init(&u8g2);
+    // u8g2_t u8g2;
+    // u8g2Init(&u8g2);
 
     /* 开启Lua虚拟机并执行自定义lua代码 */
     // lua_State *L;
@@ -68,9 +76,10 @@ int main(void)
         // Serial_SendString("Hello World!\r\n");
         // OLED_ShowString(1, 1, "Hello World!");
         // Delay_s(1);
-       u8g2_FirstPage(&u8g2);
-       do {
-           draw(&u8g2);
-       } while (u8g2_NextPage(&u8g2));
+    //    u8g2_FirstPage(&u8g2);
+    //    do {
+    //        draw(&u8g2);
+    //    } while (u8g2_NextPage(&u8g2));
+			// arm_std_f32(EcgDiscrList,28-4,&stdResultDiffECG);
     }
 }
