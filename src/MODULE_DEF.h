@@ -1,0 +1,102 @@
+#ifndef __MODULE_DEF_H
+#define __MODULE_DEF_H
+
+/*****************************************/
+// #define PROTEUS
+// #define LED
+#define OLED
+// #define KEY
+#define SERIAL
+// #define I2C
+#define ADC
+// #define PWM
+// #define MATH
+#define FFT
+// #define ADS1115
+#define U8G2
+// #define LUA
+/*****************************************/
+#include "stm32f10x.h"
+
+#include "Delay.h"
+#include "Timer.h"
+
+#ifdef LED
+#include "LED.h"
+#endif
+
+#ifdef OLED
+#include "OLED.h"
+#endif
+
+#ifdef KEY
+#include "Key.h"
+#endif
+
+#ifdef SERIAL
+#include "Serial.h"
+#endif
+
+#ifdef I2C
+#include "I2C.h"
+#endif
+
+#ifdef ADC
+#include "AD.h"
+#endif
+
+#ifdef PWM
+#include "PWM.h"
+#endif
+
+#ifdef MATH
+#include "math.h"
+#include "arm_math.h"
+#endif
+
+#ifdef FFT
+#include "stm32_dsp.h"
+#endif
+
+#ifdef ADS1115
+#include "ADS1115.h"
+#endif
+
+#ifdef U8G2
+#include "I2C.h"
+#include "u8g2.h"
+#endif
+
+#ifdef LUA
+#include "lelib.h"
+/* 将userscropts.lua中的内容加载进"incbin_luascript_start"字符串 */
+#define STR2(x) #x
+#define STR(x) STR2(x)
+#if defined ( __GNUC__ )
+    // this aligns start address to 16 and terminates byte array with explict 0
+    // which is not really needed, feel free to change it to whatever you want/need
+    #define INCBIN(name, file) \
+        __asm(".section .rodata\n" \
+                ".global incbin_" STR(name) "_start\n" \
+                "incbin_" STR(name) "_start:\n" \
+                ".incbin \"" file "\"\n" \
+                ".byte 0\n" \
+        ); \
+        extern const char incbin_ ## name ## _start[];
+
+    INCBIN(luascript, "./userscripts.lua");
+#elif defined ( __CC_ARM )
+    static char* incbin_luascript_start = "\
+        while true do \
+        led_on()\
+        delayms(200)\
+        led_off()\
+        delayms(200)\
+        end\
+    ";
+#endif
+#endif
+
+void module_init(void);
+
+#endif /* __MODULE_DEF_H */
