@@ -3,17 +3,17 @@
 
 /*****************************************/
 // #define PROTEUS
-// #define LED
+#define LED
 #define OLED
-// #define KEY
+#define KEY
 #define SERIAL
-// #define I2C
-#define ADC
-// #define PWM
+#define I2C
+// #define ADC
+#define PWM
 // #define MATH
-#define FFT
+// #define FFT
 // #define ADS1115
-#define U8G2
+// #define U8G2
 // #define LUA
 /*****************************************/
 #include "stm32f10x.h"
@@ -27,6 +27,7 @@
 
 #ifdef OLED
 #include "OLED.h"
+#include "OLED_Terminal.h"
 #endif
 
 #ifdef KEY
