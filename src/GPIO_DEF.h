@@ -28,6 +28,8 @@
 #define PIN_SERIAL_TX       GPIO_Pin_9
 #define PIN_SERIAL_RX       GPIO_Pin_10
 #define USART_SERIAL        USART1
+#define SERIAL_BAUDRATE     9600
+
 // ADS1115
 #define GPIO_ADS1115        GPIOB
 #define PIN_ADS1115_SCL     GPIO_Pin_10

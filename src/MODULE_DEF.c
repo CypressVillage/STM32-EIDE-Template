@@ -1,4 +1,5 @@
 #include "MODULE_DEF.h"
+#include "GPIO_DEF.h"
 
 void module_init(void)
 {
@@ -20,7 +21,7 @@ void module_init(void)
 #endif
 
 #ifdef SERIAL
-    Serial_Init();
+    Serial_Init(SERIAL_BAUDRATE);
 #endif
 
 #ifdef I2C
@@ -51,5 +52,9 @@ void module_init(void)
     luaopen_base(L);
     luaL_setfuncs(L, elib, 0);
     luaL_dostring(L, incbin_luascript_start);
+#endif
+
+#ifdef WIT
+
 #endif
 }

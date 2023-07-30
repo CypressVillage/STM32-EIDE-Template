@@ -6,7 +6,7 @@
 uint8_t Serial_RxData;
 uint8_t Serial_RxFlag;
 
-void Serial_Init(void)
+void Serial_Init(unsigned int baudrate)
 {
 	RCC_APB2PeriphClockCmd(RCC_USART_SERIAL, ENABLE);
 	RCC_APB2PeriphClockCmd(RCC_GPIO_SERIAL, ENABLE);
@@ -23,7 +23,7 @@ void Serial_Init(void)
 	GPIO_Init(GPIO_SERIAL, &GPIO_InitStructure);
 	
 	USART_InitTypeDef USART_InitStructure;
-	USART_InitStructure.USART_BaudRate = 9600;
+	USART_InitStructure.USART_BaudRate = baudrate;
 	USART_InitStructure.USART_HardwareFlowControl = USART_HardwareFlowControl_None;
 	USART_InitStructure.USART_Mode = USART_Mode_Tx | USART_Mode_Rx;
 	USART_InitStructure.USART_Parity = USART_Parity_No;

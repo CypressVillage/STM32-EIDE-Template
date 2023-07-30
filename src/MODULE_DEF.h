@@ -15,6 +15,7 @@
 // #define ADS1115
 // #define U8G2
 // #define LUA
+#define WIT
 /*****************************************/
 #include "stm32f10x.h"
 
@@ -96,6 +97,11 @@
         end\
     ";
 #endif
+#endif
+
+#ifdef WIT
+
+
 #endif
 
 void module_init(void);
