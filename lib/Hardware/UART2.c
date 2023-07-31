@@ -5,7 +5,7 @@
 #include "stm32f10x_rcc.h"
 #include "misc.h"
 #include "wit_c_sdk.h"
-
+#include "GPIO_DEF.h"
 
 void Usart2Init(unsigned int uiBaud)
 {
@@ -13,17 +13,17 @@ void Usart2Init(unsigned int uiBaud)
 	USART_InitTypeDef USART_InitStructure;
 	NVIC_InitTypeDef NVIC_InitStructure; 
 	
-	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);
-	RCC_APB1PeriphClockCmd(RCC_APB1Periph_USART2, ENABLE);
+	RCC_APB2PeriphClockCmd(RCC_GPIO_WT1, ENABLE);
+	RCC_APB1PeriphClockCmd(RCC_USART_WT1, ENABLE);
 	
 	// 485 control pin
-	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_1;
+	GPIO_InitStructure.GPIO_Pin = PIN_WT1_TX;
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
 	GPIO_Init(GPIOA, &GPIO_InitStructure);
-	GPIO_SetBits(GPIOA, GPIO_Pin_1);
+	GPIO_SetBits(GPIOA, PIN_WT1_TX);
 	
-	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_2;
+	GPIO_InitStructure.GPIO_Pin = PIN_WT1_RX;
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
 	GPIO_Init(GPIOA, &GPIO_InitStructure);    
@@ -38,10 +38,10 @@ void Usart2Init(unsigned int uiBaud)
 	USART_InitStructure.USART_Parity = USART_Parity_No ;
 	USART_InitStructure.USART_HardwareFlowControl = USART_HardwareFlowControl_None;
 	USART_InitStructure.USART_Mode = USART_Mode_Rx | USART_Mode_Tx;
-	USART_Init(USART2, &USART_InitStructure); 
-	USART_ITConfig(USART2, USART_IT_RXNE, ENABLE);
+	USART_Init(USART_WT1, &USART_InitStructure); 
+	USART_ITConfig(USART_WT1, USART_IT_RXNE, ENABLE);
 	
-	USART_Cmd(USART2, ENABLE);
+	USART_Cmd(USART_WT1, ENABLE);
 	NVIC_InitStructure.NVIC_IRQChannel = USART2_IRQn;
 	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 1;
 	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 8;
@@ -51,11 +51,11 @@ void Usart2Init(unsigned int uiBaud)
 void USART2_IRQHandler(void)
 {
 	unsigned char ucTemp;
-	if(USART_GetITStatus(USART2, USART_IT_RXNE) != RESET)
+	if(USART_GetITStatus(USART_WT1, USART_IT_RXNE) != RESET)
 	{
-		ucTemp = USART_ReceiveData(USART2);
+		ucTemp = USART_ReceiveData(USART_WT1);
 		WitSerialDataIn(ucTemp);
-		USART_ClearITPendingBit(USART2, USART_IT_RXNE);
+		USART_ClearITPendingBit(USART_WT1, USART_IT_RXNE);
 	}
 }
 void Uart2Send(unsigned char *p_data, unsigned int uiSize)
@@ -63,8 +63,8 @@ void Uart2Send(unsigned char *p_data, unsigned int uiSize)
 	unsigned int i;
 	for(i = 0; i < uiSize; i++)
 	{
-		while(USART_GetFlagStatus(USART2, USART_FLAG_TXE) == RESET);
-		USART_SendData(USART2, *p_data++);		
+		while(USART_GetFlagStatus(USART_WT1, USART_FLAG_TXE) == RESET);
+		USART_SendData(USART_WT1, *p_data++);		
 	}
-	while(USART_GetFlagStatus(USART2, USART_FLAG_TC) == RESET);
+	while(USART_GetFlagStatus(USART_WT1, USART_FLAG_TC) == RESET);
 }

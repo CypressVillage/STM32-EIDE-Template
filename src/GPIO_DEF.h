@@ -29,11 +29,16 @@
 #define PIN_SERIAL_RX       GPIO_Pin_10
 #define USART_SERIAL        USART1
 #define SERIAL_BAUDRATE     9600
-
 // ADS1115
 #define GPIO_ADS1115        GPIOB
 #define PIN_ADS1115_SCL     GPIO_Pin_10
 #define PIN_ADS1115_SDA     GPIO_Pin_11
-
+// WT1-IMU陀螺仪
+#define RCC_GPIO_WT1        RCC_APB2Periph_GPIOA
+#define RCC_USART_WT1       RCC_APB1Periph_USART2
+#define GPIO_WT1            GPIOA
+#define PIN_WT1_TX          GPIO_Pin_1
+#define PIN_WT1_RX          GPIO_Pin_2
+#define USART_WT1           USART2
 
 #endif /* __GPIO_DEF_H */
