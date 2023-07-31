@@ -15,7 +15,7 @@
 // #define ADS1115
 // #define U8G2
 // #define LUA
-#define WIT
+#define WT1_IMU
 /*****************************************/
 #include "stm32f10x.h"
 
@@ -99,9 +99,8 @@
 #endif
 #endif
 
-#ifdef WIT
-
-
+#ifdef WT1_IMU
+#include "WT1-IMU.h"
 #endif
 
 void module_init(void);

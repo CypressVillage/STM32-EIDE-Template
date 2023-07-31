@@ -54,7 +54,7 @@ void module_init(void)
     luaL_dostring(L, incbin_luascript_start);
 #endif
 
-#ifdef WIT
-
+#ifdef WT1_IMU
+    WT1_IMU_Init();
 #endif
 }
