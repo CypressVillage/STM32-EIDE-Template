@@ -5,7 +5,7 @@
 // #define PROTEUS
 #define LED
 #define OLED
-#define KEY
+#define KEYS
 #define SERIAL
 #define I2C
 // #define ADC
@@ -15,6 +15,7 @@
 // #define ADS1115
 // #define U8G2
 // #define LUA
+#define TB6612
 #define WT1_IMU
 /*****************************************/
 #include "stm32f10x.h"
@@ -31,7 +32,7 @@
 #include "OLED_Terminal.h"
 #endif
 
-#ifdef KEY
+#ifdef KEYS
 #include "Key.h"
 #endif
 
@@ -101,6 +102,10 @@
 
 #ifdef WT1_IMU
 #include "WT1-IMU.h"
+#endif
+
+#ifdef TB6612
+#include "TB6612.h"
 #endif
 
 void module_init(void);

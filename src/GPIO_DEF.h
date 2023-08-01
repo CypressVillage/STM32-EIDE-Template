@@ -40,5 +40,35 @@
 #define PIN_WT1_TX          GPIO_Pin_1
 #define PIN_WT1_RX          GPIO_Pin_2
 #define USART_WT1           USART2
+// TB6612电机驱动
+#define RCC_GPIO_TB6612     RCC_APB2Periph_GPIOA
+#define TIM_TB6612          TIM8
+/*--------Motor_A control pins--------*/
+#define GPIO_PWMA           GPIOC      // PWMA
+#define PIN_PWMA            GPIO_Pin_6 // PWMA
+#define PWMA                TIM8->CCR1 // PWMA
+
+#define GPIO_AIN1           GPIOA      // AIN1
+#define PIN_AIN1            GPIO_Pin_3 // AIN1
+#define AIN1                PAout(3)   // AIN1
+
+#define GPIO_AIN2           GPIOA      // AIN2
+#define PIN_AIN2            GPIO_Pin_2 // AIN2
+#define AIN2                PAout(2)   // AIN2
+/*------------------------------------*/
+/*--------Motor_B control pins--------*/
+
+#define GPIO_PWMB           GPIOC      // PWMB
+#define PIN_PWMB            GPIO_Pin_7 // PWMB
+#define PWMB                TIM8->CCR2 // PWMB
+
+#define GPIO_BIN1           GPIOA      // BIN1
+#define PIN_BIN1            GPIO_Pin_4 // BIN1
+#define BIN1                PAout(4)   // BIN1
+
+#define GPIO_BIN2           GPIOA      // BIN2
+#define PIN_BIN2            GPIO_Pin_5 // BIN2
+#define BIN2                PAout(5)   // BIN2
+/*------------------------------------*/
 
 #endif /* __GPIO_DEF_H */

@@ -16,7 +16,7 @@ void module_init(void)
     OLED_Init();
 #endif
 
-#ifdef KEY
+#ifdef KEYS
     Key_Init();
 #endif
 
@@ -56,5 +56,9 @@ void module_init(void)
 
 #ifdef WT1_IMU
     WT1_IMU_Init();
+#endif
+
+#ifdef TB6612
+    TB6612_Init();
 #endif
 }
