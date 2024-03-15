@@ -16,6 +16,7 @@
 ## 预添加库/驱动
 
 - Lua 语言支持
+- TinyMaix 支持
 - CMSIS DSP 库
 - fft 库
 - u8g2 SSD1306_128x64_I2C 图形库
