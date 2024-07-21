@@ -14,6 +14,7 @@
 *.ept
 *.eide-template
 .clang-format
+.clangd
 
 # Keil generated files
 /RTE
