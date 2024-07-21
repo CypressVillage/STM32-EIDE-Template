@@ -13,6 +13,11 @@
 # eide template
 *.ept
 *.eide-template
+.clang-format
 
 # Keil generated files
 /RTE
+/DebugConfig
+template.uvguix.*
+template.uvoptx
+EventRecorderStub.scvd
