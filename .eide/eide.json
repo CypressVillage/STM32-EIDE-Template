@@ -3,7 +3,6 @@
   "type": "ARM",
   "dependenceList": [],
   "srcDirs": [
-    ".eide/deps",
     "lib",
     "src"
   ],
@@ -70,7 +69,6 @@
         "name": "default",
         "incList": [],
         "libList": [],
-        "sourceDirList": [],
         "defineList": [
           "USE_STDPERIPH_DRIVER",
           "STM32F10X_LD",
@@ -88,7 +86,8 @@
         "lib/STM32F10x_DSP_Lib/src/asm/iar",
         "lib/STM32F10x_DSP_Lib/src/asm/gcc",
         "lib/DSP_Lib",
-        "lib/DSP_Source/GCC"
+        "lib/DSP_Source/GCC",
+        "lib/TinyMaix"
       ],
       "toolchain": "AC5",
       "compileConfig": {
@@ -153,7 +152,6 @@
         "name": "default",
         "incList": [],
         "libList": [],
-        "sourceDirList": [],
         "defineList": [
           "USE_STDPERIPH_DRIVER",
           "STM32F10X_MD",
@@ -303,5 +301,5 @@
       }
     }
   },
-  "version": "3.3"
+  "version": "3.4"
 }
