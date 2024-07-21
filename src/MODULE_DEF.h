@@ -12,11 +12,12 @@
 #define PWM
 // #define MATH
 // #define FFT
-// #define ADS1115
-// #define U8G2
+#define CMSIS_DSP
 // #define LUA
-#define TB6612
-#define WT1_IMU
+// #define U8G2
+// #define ADS1115
+// #define TB6612
+// #define WT1_IMU
 /*****************************************/
 #include "stm32f10x.h"
 
@@ -59,6 +60,10 @@
 
 #ifdef FFT
 #include "stm32_dsp.h"
+#endif
+
+#ifdef CMSIS_DSP
+#include "arm_math.h"
 #endif
 
 #ifdef ADS1115

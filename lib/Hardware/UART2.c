@@ -54,7 +54,7 @@ void USART2_IRQHandler(void)
 	if(USART_GetITStatus(USART_WT1, USART_IT_RXNE) != RESET)
 	{
 		ucTemp = USART_ReceiveData(USART_WT1);
-		WitSerialDataIn(ucTemp);
+		// WitSerialDataIn(ucTemp);
 		USART_ClearITPendingBit(USART_WT1, USART_IT_RXNE);
 	}
 }
