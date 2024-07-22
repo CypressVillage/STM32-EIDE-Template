@@ -76,6 +76,13 @@
 #endif
 
 #ifdef LUA
+// 调用lua脚本写法(gcc)
+// lua_State *L;
+// L = luaL_newstate();
+// luaopen_base(L);
+// luaL_setfuncs(L, elib, 0);
+// luaL_dostring(L, incbin_luascript_start);
+
 #include "lelib.h"
 /* 将userscropts.lua中的内容加载进"incbin_luascript_start"字符串 */
 #define STR2(x) #x
