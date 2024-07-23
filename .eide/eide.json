@@ -40,17 +40,11 @@
         },
         "options": "null"
       },
-      "uploader": "STLink",
+      "uploader": "Custom",
       "uploadConfig": {
         "bin": "",
-        "proType": "SWD",
-        "resetMode": "default",
-        "runAfterProgram": true,
-        "speed": 4000,
-        "address": "0x08000000",
-        "elFile": "None",
-        "optionBytes": ".eide/stm32f103c8t6_gcc.st.option.bytes.ini",
-        "otherCmds": ""
+        "commandLine": "C:\\Users\\cypress\\.eide\\tools\\st_cube_programer\\bin\\STM32_Programmer_CLI.exe -c port=COM3 --download d:\\work\\STM32\\template\\build\\STM32F103C8T6_gcc\\template.hex 0x08000000 -v --go",
+        "eraseChipCommand": ""
       },
       "uploadConfigMap": {
         "JLink": {
@@ -62,6 +56,17 @@
           },
           "proType": 1,
           "speed": 8000,
+          "otherCmds": ""
+        },
+        "STLink": {
+          "bin": "",
+          "proType": "SWD",
+          "resetMode": "default",
+          "runAfterProgram": true,
+          "speed": 4000,
+          "address": "0x08000000",
+          "elFile": "None",
+          "optionBytes": ".eide/stm32f103c8t6_gcc.st.option.bytes.ini",
           "otherCmds": ""
         }
       },
